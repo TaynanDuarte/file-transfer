@@ -14,7 +14,7 @@ type transfer struct {
 	fileExtension string
 }
 
-// Return a instance of Transfer
+// Returns a transfer instance
 func TransferConstructor(from string, to string, fileExtention string) transfer {
 	transfer := transfer{from: from, to: to, fileExtension: fileExtention}
 	transfer.PrepareFiles()
@@ -22,7 +22,7 @@ func TransferConstructor(from string, to string, fileExtention string) transfer 
 	return transfer
 }
 
-// Receive a file path and return only the file name
+// Receives a file path and returns the file name
 func GetFileNameFromFilePath(filePath string) string {
 
 	if strings.Contains(filePath, "/") {
@@ -33,7 +33,7 @@ func GetFileNameFromFilePath(filePath string) string {
 	return filePath
 }
 
-// Load files references and crete readers and writers
+// Loads files references and cretes readers and writers
 func (t *transfer) PrepareFiles() {
 
 	filesInfo, err := os.ReadDir(t.from)
@@ -64,7 +64,7 @@ func (t *transfer) PrepareFiles() {
 
 }
 
-// Start the transfer
+// Starts the transfer
 func (t *transfer) Run() {
 
 	var wg sync.WaitGroup
